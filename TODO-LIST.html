@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+    <style>
+        .box {
+            width: 300px;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <label>Name:</label> <input id="name"><br><br>
+    <label>Age:</label> <input id="age" type="number"><br><br>
+    <label>Gender:</label> 
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female <br><br>
+    <label>Course:</label> 
+    <select id="course">
+        <option value="Reading">Reading</option>
+        <option value="Gaming">Gaming</option>
+        <option value="Music">Music</option>
+    </select><br><br>
+    <label>Email:</label> <input id="email" type="email"><br><br>
+    <button onclick="add()">Submit</button>
+</div>
+
+<table id="data-table">
+    <tr>
+        <th>Name</th> <th>Age</th> <th>Gender</th> <th>Course</th> <th>Email</th> <th>Action</th>
+    </tr>
+</table>
+
+<script>
+    function add() {
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        var email = document.getElementById("email").value;
+        var course = document.getElementById("course").value;
+        var gender = document.querySelector("input[name='gender']:checked");
+
+        if (!name || !age || !email || !gender) {
+            alert("Fill all fields!");
+            return;
+        }
+
+        var table = document.getElementById("data-table");
+        var row = table.insertRow();
+        row.innerHTML = `<td>${name}</td><td>${age}</td><td>${gender.value}</td><td>${course}</td><td>${email}</td>
+                         <td><button onclick="this.parentElement.parentElement.remove()">Delete</button></td>`;
+
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("course").value = "Reading";
+        gender.checked = false;
+    }
+</script>
+
+</body>
+</html>
