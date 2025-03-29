@@ -1,0 +1,47 @@
+<style>
+    .overlay{
+        background-color: black;
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+        display: none;
+    }
+    .bye{
+        background-color: white;
+        color: rgb(0, 0, 0);
+        z-index: 3;
+        position: absolute;
+        width: 40%;
+        left: 30%;
+        top: 30%;
+        padding: 20px;
+        border-radius: 20px;
+        display: none;
+    }
+</style>
+
+<button onclick="openPopup()">show</button>
+<div class="overlay"></div>
+<div class="bye">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque velit atque eos fugiat porro doloribus sunt et ab? Vero iste velit ratione sequi repellendus, repellat qui rerum assumenda nam ab?</p>
+    <button onclick="closePopup()">close</button>
+</div>
+
+<script>
+    var overlay = document.querySelector(".overlay");
+    var bye = document.querySelector(".bye");
+
+    function openPopup() {
+        overlay.style.display = "block";
+        bye.style.display = "block";
+    }
+
+    function closePopup() {
+        overlay.style.display = "none";
+        bye.style.display = "none";
+    }
+</script>
